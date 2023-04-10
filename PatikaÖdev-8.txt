@@ -1,0 +1,88 @@
+--test veritabanınızda employee isimli sütun bilgileri id(INTEGER), name VARCHAR(50), 
+--	birthday DATE, email VARCHAR(100) olan bir tablo oluşturalım.
+
+
+CREATE TABLE employee
+(
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	email VARCHAR(100)NOT NULL,
+	birtday DATE
+)
+
+
+--
+--Oluşturduğumuz employee tablosuna 'Mockaroo' servisini kullanarak 50 adet veri ekleyelim.
+
+INSERT INTO employee (id, name, email, birtday) VALUES (1, 'Melly', 'Melly0@gmail.com', '1982/02/22');
+INSERT INTO employee (id, name, email, birtday) VALUES (2, 'Moly', 'Moly0@gmail.com', '2016/12/16');
+INSERT INTO employee (id, name, email, birtday) VALUES (3, 'Morty', 'Mortyyy0@gmail.com', '2009/12/18');
+INSERT INTO employee (id, name, email, birtday) VALUES (4, 'Moor', 'Moor0@gmail.com', '1999/11/09');
+INSERT INTO employee (id, name, email, birtday) VALUES (5, 'Carlos', 'Carlos0101@gmail.com', '1984/09/03');
+INSERT INTO employee (id, name, email, birtday) VALUES (6, 'July', 'July00@gmail.com', '1975/03/23');
+INSERT INTO employee (id, name, email, birtday) VALUES (7, 'Benner', 'Benner0@gmail.com', '1990/04/29');
+INSERT INTO employee (id, name, email, birtday) VALUES (8, 'Mandly', 'Mandlyy0@gmail.com', '1993/05/30');
+INSERT INTO employee (id, name, email, birtday) VALUES (9, 'Ganger', 'Ganger0@gmail.com', '2003/11/09');
+INSERT INTO employee (id, name, email, birtday) VALUES (10, 'Banow', 'Banow0@gmail.com', '1984/03/10');
+INSERT INTO employee (id, name, email, birtday) VALUES (11, 'Darcy', 'Darcy0@gmail.com', '1969/03/10');
+INSERT INTO employee (id, name, email, birtday) VALUES (12, 'Bella', 'Bella0@gmail.com', '2002/01/19');
+INSERT INTO employee (id,name, email, birthday) VALUES (13,'Keith', 'Keith0@gmail.com', '1997/05/02');
+INSERT INTO employee (id,name, email, birthday) VALUES (14,'Cherise', 'Cherisey0@gmail.com', '1973/08/19');
+INSERT INTO employee (id,name, email, birthday) VALUES (15,'Hannry', 'Hannry0@gmail.com', '1973/05/04');
+						.
+						.
+						.
+INSERT INTO employee (name, birthday, email) VALUES (50,'Themy', 'the_mey0@gmail.com', '1983-12-04');
+
+
+--
+--Sütunların her birine göre diğer sütunları güncelleyecek 5 adet UPDATE işlemi yapalım.
+
+UPDATE employee
+SET name = 'maruka'
+WHERE email ='Mortyyy0@gmail.com'
+RETURNING*;
+
+UPDATE employee
+SET email = 'melly@ogr.adu.edu.tr'
+WHERE id = 1
+RETURNING*;
+
+UPDATE employee
+SET birtday = '1977-05-10'
+WHERE name = 'July'
+RETURNING*;
+
+UPDATE employee
+SET name= 'Marpe'
+WHERE name LIKE 'Z%'
+RETURNING*;
+
+UPDATE employee
+SET name= 'Mandly'
+WHERE name LIKE 'O%'
+RETURNING*;
+
+
+
+--
+--Sütunların her birine göre ilgili satırı silecek 5 adet DELETE işlemi yapalım.
+
+DELETE FROM employee
+WHERE name ='July'
+RETURNING*;
+
+DELETE FROM employee
+WHERE id=3
+RETURNING*;
+
+DELETE FROM employee
+WHERE email = 'Hannry0@gmail.com'
+
+DELETE FROM employee
+WHERE id=8
+RETURNING*;
+
+DELETE FROM employee
+WHERE birtday ='2003/11/09'
+RETURNING*;
